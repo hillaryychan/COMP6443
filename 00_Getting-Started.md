@@ -7,8 +7,6 @@
 3. Go to "Your Certificates" tab and click "Import..."
 4. Select the `*.p12` file and enter password
 
-Two free flags: `COMP6443{WELCOME_TO_COMP6843}` and `COMP6443{WELCOME_TO_COMP6443.ejUyMDk3NjA=.uR8lDwGIySCluuwoHKjceA==}`
-
 ## Browser Developer Tools
 
 Accessing browser developer tools:
@@ -25,14 +23,7 @@ Relevant documentation:
 * Chrome: <https://developers.google.com/web/tools/chrome-devtools/>
 * Firefox: <https://developer.mozilla.org/son/docs/Tools>
 
-## Opening Account
-
-set value to "yes"
-set checked="true"
-
-Flag: `COMP6443{DEV_TOOL_WORKS_GREAT.ejUyMDk3NjA=.cbgOK5iYYlbPZ91vUQRigg==}`
-
-It is useful to create another user in your browser. If you dont want your browser to remember anything locally, Incognito doesn't store local history but does not hide your traffic. Having a somewhat isolated environment for hacking is useful.
+It is useful to create another user in your browser. If you don't want your browser to remember anything locally, Incognito doesn't store local history but does not hide your traffic. Having a somewhat isolated environment for hacking is useful.
 
 ## Cookies
 
@@ -40,10 +31,6 @@ Extensions to edit cookies:
 
 * Chrome: <https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg?hl=en>
 * Firefox: <https://addons.mozilla.org/en-US/firefox/addon/edit-cookie/>
-
-Set `lucky` cookie's value to `1`
-
-Flag: `COMP6443{YUMMY.ejUyMDk3NjA=.03Sid76U91XA3IJN+VAdDA==}`
 
 ## Burp Suite
 
@@ -65,3 +52,9 @@ If you used the proxy switched suggested above do the following
 Chrome: <https://support.portswigger.net/customer/portal/articles/1783065-configuring-chrome-to-work-with-burp>  
 Firefox: <https://support.portswigger.net/customer/portal/articles/1783066-configuring-firefox-to-work-with-burp>
 5. Click on "Apply changes" under actions on the left
+
+Your proxy will need a valid certificate to tell your computer "it's ok" and you're just hacking yourself. Install Burps CA Certificate following <https://support.portswigger.net/customer/portal/articles/1783075-Installing_Installing CA Certificate.html>
+
+When your proxy and Burp Suite are activated and you try to visit any site, it should hang. The burp suite window will show the attempted request your browser made. You can forward the request to let it leave the computer.
+
+Follow <https://portswigger.net/burp/documentation/desktop/options/tls#client-tls-certificates> to install your client certificate in Burp Suite. Backup the certificate from your browser to specify the certificate file.
