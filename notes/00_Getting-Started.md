@@ -53,7 +53,7 @@ Chrome: <https://support.portswigger.net/customer/portal/articles/1783065-config
 Firefox: <https://support.portswigger.net/customer/portal/articles/1783066-configuring-firefox-to-work-with-burp>
 5. Click on "Apply changes" under actions on the left
 
-Your proxy will need a valid certificate to tell your computer "it's ok" and you're just hacking yourself. Install Burps CA Certificate following <https://support.portswigger.net/customer/portal/articles/1783075-Installing_Installing CA Certificate.html>
+Your proxy will need a valid certificate to tell your computer "it's ok" and you're just hacking yourself. Install Burps CA Certificate following <https://portswigger.net/support/installing-burp-suites-ca-certificate-in-your-browser>
 
 When your proxy and Burp Suite are activated and you try to visit any site, it should hang. The burp suite window will show the attempted request your browser made. You can forward the request to let it leave the computer.
 
