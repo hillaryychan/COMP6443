@@ -4,7 +4,7 @@
 
 1. [Recon](notes/01_Recon.md)
 
-Challenges:
+## Challenges:
 
 | Topic             | Write-up                                              |
 | ---               | ---                                                   |
