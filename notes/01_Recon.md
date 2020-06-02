@@ -20,7 +20,7 @@ The modern web is implemented in a client-server model, where the client is a br
 
 HTTP is a web protocol that sends requests and receives responses.
 
-A HTTP request for <www.news.com.au>:
+A HTTP request for www.news.com.au:
 
 ``` http
 GET / HTTP/1.1
@@ -34,7 +34,7 @@ Cookie: nk=ab90da3e0150d5e72355933d25010d66
 Upgrade-Insecure-Requests: 1
 ```
 
-A HTTP response from <www.news.com.au>:
+A HTTP response from www.news.com.au:
 
 ``` http
 HTTP/1.1 200 OK
