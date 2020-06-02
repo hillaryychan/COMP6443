@@ -64,44 +64,75 @@ Content-Length: 161889
 
 ## DNS
 
-The **Domain Name System (DNS)** is a naming system for computer, services or other resources connected to the Internet or a private network.
+The **Domain Name System (DNS)** is a naming system for computer, services or other resources connected to the Internet or a private network. It is commonly used to translate user-supplied hostnames to IP addresses and vice versa.
+
+![DNS translation](../imgs/01-19_dns-translation.png)
+
+Each device connected to the Internet has a unique IP address which other machines use to find the device.
 
 ### Subdomains
 
+A **subdomain** is a domain that is part of another (main) domain.  
+Basically an additional part to your main domain name. They are created to organise and navigate different sections of your websites. E.g. store.yourwebsite.com - 'store' is the subdomain, 'yourwebsite' is the primary domain and '.com' is the top level domain (TLD)
+
+Subdomains are different from directories. E.g example.com/yn points to a directory within the example.com domain, not to a subdomain of example.com.
+
+Finding subdomains is a useful for reconnaissance. Why?  
+Because security is usually focused on the main domains, leaving subdomains to be less secure and more vulnerable.
+
+![subdomain security](../imgs/01-20_subdomain-security.png)
+
 We can obtain subdomains through the following methods:
 
-* brute forcing
-* reverse ip
+* brute forcing - using a list of subdomains, we send requests to the DNS, if the DNS responds, we know the subdomain exists  
+![subdomain bruteforce](../imgs/01-21_subdomain-bruteforce.png)
+* reverse ip - identify hostnames that have DNS records associated with an IP address
+![subdomain reverse ip](../imgs/01-22_subdomain-reverseip.png)
 * search engines
-Web Searches
-* inurl:, filetype: to identify low-hanging fruit
-* web.archive.org
-Domain Searches
-* <https://dnsdumpster.com/>
-* <https://hackertarget.com/ip-tools/>
-Certificates
-* crt.sh
-* Domains from shared certs
+    * Web Searches
+        * inurl:, is a Google Search operator which can be used to filter Google's search results to identify low-hanging fruit  
+        `site: www.mypage.com InURL: “my search term” filetype:pdf`
+        * web.archive.org
+    * Domain Searches
+        * <https://dnsdumpster.com/>
+        * <https://hackertarget.com/ip-tools/>
+    * Certificates
+        * crt.sh
+        * Domains from shared certs
 
-Intuition is sometimes better than tools. Always manually look
+Here are some scripts that enumerate subdomains:
 
-### Enumerating Content
+* [subbrute](https://github.com/TheRook/subbrute)
+* [Sublist3r](https://github.com/aboul3la/Sublist3r)
+* [knock](https://github.com/guelfoweb/knock)
 
-Active: tries millions of
-combinations of words /
-characters
+Be sure to have a look at their implementation to better understand the tools.
 
-* dirb
-* dirbuster
-* gobuster
-* fierce.pl
+Intuition is sometimes better than tools. Always manually look at the applications and get a feel for their functionality
 
-Passive: watches for new
-URL’s as you browse a website
+### Content Enumeration
 
-* Burpsuite
-* LinkFinder
-* lots of open source alternatives
+**Enumeration** is defined as a process which establishes an active connection to the target hosts to discover potential attack vectors in the system. It is used to gather the following information
+
+* usernames, group names
+* hostnames, machine names
+* network resources
+* network shares and services
+* IP tables and routing tales
+
+The gathered information is used to identify the vulnerabilities or weak points in system security and tries to exploit
+
+Enumeration can be:
+
+* **Active**: tries millions of combinations of words/characters
+    * dirb
+    * dirbuster
+    * gobuster
+    * fierce.pl
+* **Passive**: watches for new URL’s as you browse a website
+    * Burpsuite
+    * LinkFinder
+    * lots of open source alternatives
 
 Enumeration pro tips:
 
@@ -154,7 +185,7 @@ Change user behaviour:
 
 BeyondCorp <https://cloud.google.com/beyondcorp/>
 
-Never blame users for unintentional / uninformed failure.
+Never blame users for unintentional/uninformed failure.
 
 ## Disrupting Nation State Hackers
 
@@ -223,4 +254,3 @@ Defence mechanisms:
 * Have a plan to deal with data corruption, data manipulation or data destruction
 * Differentiate between criminals and nation-state intruders
 * Defend, improve, evaluate
-
