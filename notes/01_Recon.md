@@ -116,7 +116,7 @@ Enumeration pro tips:
 
 ## Basic Tests
 
-Vulnerabilities arise when assumptions are challenges.
+***Vulnerabilities arise when assumptions are challenges.***
 
 For example, if we are given a prompt that asks for your name ,the expectation is that we enter a name with alphabetical characters.
 However, we can enter other excellent names:
@@ -155,3 +155,72 @@ Change user behaviour:
 BeyondCorp <https://cloud.google.com/beyondcorp/>
 
 Never blame users for unintentional / uninformed failure.
+
+## Disrupting Nation State Hackers
+
+Video link: <https://www.youtube.com/watch?v=bDJb8WOJYdA>
+
+If you want to protect your network, you need to ***really*** know your network; know the devices, security, technology, everything inside it.
+
+Intrusion phases:
+
+**1. Reconnaissance** - understand the target  
+There is a difference between what you intend your networks to use and what the network actually uses. Evaluate what you will use, lock down and disable what you won't be using
+
+**2. Initial exploitation** - find a way to get inside the network.  
+This can happen from
+
+* spear fishing
+* water holing
+* exploiting a known CVE (common vulnerabilities and exposures)
+* SQL injection
+* exploiting zero day
+
+The most common intrusions are
+
+* email - user clicks on something they shouldn't've
+* website - malicious website
+* removable media - inserting contaminated media
+
+Defence mechanisms:
+
+* Do not rely on the user to make the right decisions
+* anti-exploitation features like [Microsoft EMET](https://support.microsoft.com/en-au/help/2458544/the-enhanced-mitigation-experience-toolkit)
+* Take advantage of software improvements (preferably as a background activity outside the users control)
+* Use a secure host baseline
+* Have processes and plans to understand what is normal for your network; e.g. if someone has credentials re they operating in the norm for their credentials
+* Segmenting off portions of a network, whitelisting
+* Don't hardcode and include things in scripts
+* Enable logs, and **look at them**
+
+**3. Establish persistence** - being in the network is not enough. Stay in the network, privilege escalate, find run keys, scripts etc.
+
+Defence mechanisms:
+
+* Segmenting off portions of a network
+* Application whitelisting
+
+**4. Install Tools** - bring in tools that will do the work
+
+Defence mechanisms:
+
+* Reputation services - every software that wants to run on your machine gets hashed and pushed to the cloud
+
+**5. Move Laterally** - find the things you need to find
+
+Defence mechanisms:
+
+* Network segmentation
+* Monitoring
+* Access privileges - limit admin privileges, segment accesses, enforce 2FA
+* Manage trust relationships between accounts
+
+**6. Collect exfil and exploit** - once your in the network, get what you need and get out undetected
+
+Defence mechanisms:
+
+* Off-site backups
+* Have a plan to deal with data corruption, data manipulation or data destruction
+* Differentiate between criminals and nation-state intruders
+* Defend, improve, evaluate
+
