@@ -64,10 +64,94 @@ Content-Length: 161889
 
 ## DNS
 
+The **Domain Name System (DNS)** is a naming system for computer, services or other resources connected to the Internet or a private network.
+
 ### Subdomains
+
+We can obtain subdomains through the following methods:
+
+* brute forcing
+* reverse ip
+* search engines
+Web Searches
+* inurl:, filetype: to identify low-hanging fruit
+* web.archive.org
+Domain Searches
+* <https://dnsdumpster.com/>
+* <https://hackertarget.com/ip-tools/>
+Certificates
+* crt.sh
+* Domains from shared certs
+
+Intuition is sometimes better than tools. Always manually look
 
 ### Enumerating Content
 
+Active: tries millions of
+combinations of words /
+characters
+
+* dirb
+* dirbuster
+* gobuster
+* fierce.pl
+
+Passive: watches for new
+URL’s as you browse a website
+
+* Burpsuite
+* LinkFinder
+* lots of open source alternatives
+
+Enumeration pro tips:
+
+* localisation (by a different developer)
+* technology-specific things
+    * Wordpress/Drupa Admin, Themes
+    * Build a set of working exploits
+* Databases/Data stores (e.g. s3 buckets)
+* Legacy applications
+* Mismatched technology stacks
+* others
+
 ## Basic Tests
 
+Vulnerabilities arise when assumptions are challenges.
+
+For example, if we are given a prompt that asks for your name ,the expectation is that we enter a name with alphabetical characters.
+However, we can enter other excellent names:
+
+* Null byte
+* Newline
+* XML/JSON/SQL
+* OS Commands
+* Backticks (Unix)
+* Large/small names
+* Strange character sets
+
+A quick informal "sniff" test for inputs is using **`‘”>1#--;``wget blah``\x00\nabc`** as input.  
+This is **not** a definitive test of whether a website is safe.  
+It's a test of whether a website makes any attempt to handle unexpected input.
+
+* Does the HTML Layout break? You may have cross-site scripting
+* Do you get a database error? You may have SQL Injection
+* Does your call-back get pinged? Congratulations, assume it's compromised
+
+(*Make sure to use a proxy - browsers may modify your request*)
+
 ## Securing The Perimeter
+
+Fix the low-hanging fruit first:
+
+* Delete content that isn’t necessary.
+* Restrict access to non-hardened content.
+* Test your applications, fix the bugs.
+
+Change user behaviour:
+
+* Use secure passwords (admin:admin is not ok).
+* Patch your environment.
+
+BeyondCorp <https://cloud.google.com/beyondcorp/>
+
+Never blame users for unintentional / uninformed failure.
