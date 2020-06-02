@@ -129,7 +129,7 @@ However, we can enter other excellent names:
 * Large/small names
 * Strange character sets
 
-A quick informal "sniff" test for inputs is using **`‘”>1#--;``wget blah``\x00\nabc`** as input.  
+A quick informal "sniff" test for inputs is using **``‘”>1#--;`wget blah`\x00\nabc``** as input.  
 This is **not** a definitive test of whether a website is safe.  
 It's a test of whether a website makes any attempt to handle unexpected input.
 
