@@ -6,7 +6,7 @@
 
 ## Challenges:
 
-| Topic             | Write-up                                              |
-| ---               | ---                                                   |
-| Getting Started   | [here](challenges/getting-started/getting_started.md) |
-| Recon             | [here](challenges/topic1/topic1.md)                   |
+| Topic             | Write-up                                              | Solutions |
+| ---               | ---                                                   | ---       |
+| Getting Started   | [here](challenges/getting-started/getting_started.md) | N/A       |
+| Recon             | [here](challenges/topic1/topic1.md)                   | [here](challenges/topic1/recon_solutions.md) |
