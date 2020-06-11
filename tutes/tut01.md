@@ -1,7 +1,7 @@
 # Tutorial 1
 
 Tutor: Joshua Kwong  
-Contact: @jk on slack
+Contact: @jk on slack  
 Also has email, but prefers slack
 
 ## Tools
