@@ -1,8 +1,8 @@
 # Recon
 
-Jump to [checklist](#recon-checklist)
-
 **Recon** (or **reconnaissance**) is the act on conducting preliminary exploration of a potential target.
+
+Jump to [checklist](#recon-checklist)
 
 ## Threat Modelling
 
@@ -64,7 +64,29 @@ Content-Length: 161889
 <!doctype html><html lang="en"><head><meta charset="utf-8"> ...
 ```
 
+### What Happens When You Type in a URL
+
+1. You enter a URL into a browser
+2. The browser obtains the IP address of the domain name by
+    1. Checking the cache for a DNS record to find the corresponding IP address
+    2. Looking up the IP address for the domain name via DNS
+3. The browser sends a HTTP request to the server
+4. The server sends a HTTP response
+5. The browser begins rendering the HTML
+6. The browser sends requests for additional objects embedded in HTML (images, css, JavaScript) and repeats steps 3-5.
+7. Once the page is loaded, the browser sends further async requests as needed
+
 ### Cookies vs. Sessions
+
+Cookies and sessions are used to store information. Cookies are only stored on the client-side machine, while sessions get stored on the client as well as a server.
+
+A **session** is a collection of data stored on the server and associated with a given user (usually via a cookie containing an id code). It creates a file in a temporary directory on the server where registered session variables and their values are stored. This data will be available to all pages on the site during that visit.
+
+A session ends when the user closes the browser or after leaving the site, the server will terminate the session after a predetermined period of time, commonly 30 minutes duration
+
+**Cookies** are text files stored on the client computer and they are kept tracking and identification purposes. Server script sends a set of cookies to the browser. For example name, age, or id number etc. The browser stores this information on a local machine for future use.
+
+The next time the browser sends any request to a web server, it sends cookie information to the server and the server uses the information to identify the user.
 
 ## DNS
 
