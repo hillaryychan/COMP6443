@@ -62,6 +62,8 @@ Content-Length: 161889
 <!doctype html><html lang="en"><head><meta charset="utf-8"> ...
 ```
 
+### Cookies vs. Sessions
+
 ## DNS
 
 The **Domain Name System (DNS)** is a naming system for computer, services or other resources connected to the Internet or a private network. It is commonly used to translate user-supplied hostnames to IP addresses and vice versa.
@@ -69,6 +71,50 @@ The **Domain Name System (DNS)** is a naming system for computer, services or ot
 ![DNS translation](../imgs/01-19_dns-translation.png)
 
 Each device connected to the Internet has a unique IP address which other machines use to find the device.
+
+DNS Record Types
+
+* **A** (Address Mapping) - also known as DNS host record; stores a hostname and corresponding IPv4 address
+* **AAAA** (IPv6 Address Mapping)- stores a hostname and corresponding IPv6 address
+* **CNAME** (Canonica Name) - can be used to alias a hostname to another hostname. When a DNS client requests a record that contains a CNAME, which points to another hostname, the DNS resolution process is repeated with the new hostname.
+* **MX** (Mail Exchange) - Specifies which SMTP email server(s) to attempt to use to deliver mail to when this type of request is made  
+Requires a ***priority*** value as part of their entry. Priority is used to indicate which of the servers the MX records should attempt to use first
+* **NS** (Name Server) - specifies a DNS Zone, such as "example.com" is delegated to a specific Authoritative Name Server, and provides the address of the name server
+* **PTR** (Reverse-lookup Pointer) - allows a DNS resolver to provide an IP address and receive a hostname
+* **CERT** (Certificate) - stores encryption certificates
+* **SRV** (Service Location) - service location record, like MX but for other communication protocols
+* **TXT** (Text) - used to store any text-based information that can be grabbed when necessary. Commonly used to hold SPF data and verify domain ownership>
+* **SOA** (Start of Authority) - appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone, contact detail for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed
+
+### SPF, DKIM, DMARC
+
+SPF, DKIM, and DMARC are  email security protocols.
+
+**Sender Policy Framework (SPF)** hardens your DNS servers and restricts who can send emails from your domain. SPF can prevent domain spoofing. It enables your mail server to determine when a message came from the domain that it used.
+
+**DomainKeys Identified Mail (DKIM)** ensures that the content of your emails remain trusted and hasn't been tampered with or compromised.
+
+**Domain-based Message Authentication, Reporting and Conformance (DMARC)** ties the first two protocols with a consistent set of policies. It also links the sender's domain name with what is listed in the `From:` header and also has some better reporting back from mail recipients.
+
+A summary:
+
+* SPF - specifies the servers that can send emails for a domain
+* DKIM - verifies that message content is authentic and not changed
+* DMARC - verifies how your domain handles suspicious incoming emails
+
+Querying these protocols via `dig`:
+Note: replace `selector` and `domain` with the corresponding DKIM selector and domain you would like to lookup
+
+``` sh
+# SPF
+dig domain txt
+
+# DKIM
+dig selector._domainkey.domain
+
+# DMARC
+dig _dmarc.domain
+```
 
 ### Subdomains
 
@@ -96,8 +142,8 @@ We can obtain subdomains through the following methods:
     * Domain Searches
         * <https://dnsdumpster.com/>
         * <https://hackertarget.com/ip-tools/>
-    * Certificates
-        * crt.sh
+    * Certificates - **certificate transparency** is an Internet security standard and open source framework for monitoring and auditing digital certificates. The standard creates a system of public logs that seek to eventually record all certificates issued by publicly trusted certificate authorities, allowing efficient identification of mistakenly or maliciously identified certificates.
+        * [crt.sh](https://crt.sh/)
         * Domains from shared certs
 
 Here are some scripts that enumerate subdomains:
@@ -144,6 +190,18 @@ Enumeration pro tips:
 * Legacy applications
 * Mismatched technology stacks
 * others
+
+## Recon Checklist
+
+- [ ] Direct site links
+- [ ] Certificate transparency ([crt.sh](crt.sh))
+- [ ] Brute force incl. subdomains, subdirectories etc.
+- [ ] Developer Tools
+    - [ ] File comments (e.g HTML, js)
+    - [ ] `robots.txt`
+    - [ ] Console
+    - [ ] File paths
+- [ ] Email protocols (SPF, DKIM, DMARC)
 
 ## Basic Tests
 
