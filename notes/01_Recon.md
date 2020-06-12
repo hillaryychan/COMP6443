@@ -1,5 +1,7 @@
 # Recon
 
+Jump to [checklist](#recon-checklist)
+
 **Recon** (or **reconnaissance**) is the act on conducting preliminary exploration of a potential target.
 
 ## Threat Modelling
@@ -193,15 +195,15 @@ Enumeration pro tips:
 
 ## Recon Checklist
 
-- [ ] Direct site links
-- [ ] Certificate transparency ([crt.sh](crt.sh))
-- [ ] Brute force incl. subdomains, subdirectories etc.
-- [ ] Developer Tools
-    - [ ] File comments (e.g HTML, js)
-    - [ ] `robots.txt`
-    - [ ] Console
-    - [ ] File paths
-- [ ] Email protocols (SPF, DKIM, DMARC)
+* [ ] Direct site links
+* [ ] Certificate transparency ([crt.sh](crt.sh))
+* [ ] Brute force incl. subdomains, subdirectories etc.
+* [ ] Developer Tools
+    * [ ] File comments (e.g HTML, js)
+    * [ ] `robots.txt`
+    * [ ] Console
+    * [ ] File paths
+* [ ] Email protocols (SPF, DKIM, DMARC)
 
 ## Basic Tests
 
