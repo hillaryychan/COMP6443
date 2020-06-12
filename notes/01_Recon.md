@@ -221,10 +221,11 @@ Enumeration pro tips:
 * [ ] Certificate transparency ([crt.sh](crt.sh))
 * [ ] Brute force incl. subdomains, subdirectories etc.
 * [ ] Developer Tools
-    * [ ] File comments (e.g HTML, js)
-    * [ ] `robots.txt`
+    * [ ] View page source for comments or subdirectory files
     * [ ] Console
-    * [ ] File paths
+    * [ ] Subdirectory files
+    * [ ] `robots.txt`
+    * [ ] Cookies
 * [ ] Email protocols (SPF, DKIM, DMARC)
 
 ## Basic Tests
