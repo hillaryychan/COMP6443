@@ -146,8 +146,7 @@ The main way we store session information is in a cookie.
 The server sends to the client:
 
 ``` http
-Set-Cookie: SSID=abcdef; Domain=lol.com; Expires=Mon, 20 Jan 2020 20:20:20 GMT; Secure;
-HttpOnly
+Set-Cookie: SSID=abcdef; Domain=lol.com; Expires=Mon, 20 Jan 2020 20:20:20 GMT; Secure; HttpOnly
 
 name=value   the data to store
 Domain       specifies the (sub)domain that the cookie belongs to
