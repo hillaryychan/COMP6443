@@ -64,30 +64,6 @@ Content-Length: 161889
 <!doctype html><html lang="en"><head><meta charset="utf-8"> ...
 ```
 
-### What Happens When You Type in a URL
-
-1. You enter a URL into a browser
-2. The browser obtains the IP address of the domain name by
-    1. Checking the cache for a DNS record to find the corresponding IP address
-    2. Looking up the IP address for the domain name via DNS
-3. The browser sends a HTTP request to the server
-4. The server sends a HTTP response
-5. The browser begins rendering the HTML
-6. The browser sends requests for additional objects embedded in HTML (images, css, JavaScript) and repeats steps 3-5.
-7. Once the page is loaded, the browser sends further async requests as needed
-
-### Cookies vs. Sessions
-
-Cookies and sessions are used to store information. Cookies are only stored on the client-side machine, while sessions get stored on the client as well as a server.
-
-A **session** is a collection of data stored on the server and associated with a given user (usually via a cookie containing an id code). It creates a file in a temporary directory on the server where registered session variables and their values are stored. This data will be available to all pages on the site during that visit.
-
-A session ends when the user closes the browser or after leaving the site, the server will terminate the session after a predetermined period of time, commonly 30 minutes duration
-
-**Cookies** are text files stored on the client computer and they are kept tracking and identification purposes. Server script sends a set of cookies to the browser. For example name, age, or id number etc. The browser stores this information on a local machine for future use.
-
-The next time the browser sends any request to a web server, it sends cookie information to the server and the server uses the information to identify the user.
-
 ## DNS
 
 The **Domain Name System (DNS)** is a naming system for computer, services or other resources connected to the Internet or a private network. It is commonly used to translate user-supplied hostnames to IP addresses and vice versa.
@@ -96,7 +72,17 @@ The **Domain Name System (DNS)** is a naming system for computer, services or ot
 
 Each device connected to the Internet has a unique IP address which other machines use to find the device.
 
-DNS Record Types
+### DNS Hierarchy
+
+The DNS uses a large number of servers, organised in a ***hierarchical*** fashion. No single DNS has all of the mappings for all the hosts in the Internet. Instead the mappings are distributed across DNS servers.
+
+There are 3 classes of DNS servers organised in hierarchy:
+
+* **root DNS servers** - they provide the IP addresses of the top-level domain severs. Its location is hard-wired into other servers.
+* **top-level domain (TLD) DNS servers** - for each top-level domain (e.g. .org, .com, .net, .edu, .gov, all country domains etc.) there is a TLD server. TLD servers provide the IP address of authoritative DNS servers and are managed professionally
+* **authoritative DNS servers** - every organisation with publicly accessible hosts (such as Web and mail servers) on the Internet must provide publicly accessible DNS records that map the names of those hosts to IP addresses. An organisation's authoritative DNS server houses these DNS records. A organisation can choose to implement their own authoritative DNS server or pay to have these records stored in an authoritative DNS server of some service provider.
+
+### DNS Record Types
 
 * **A** (Address Mapping) - also known as DNS host record; stores a hostname and corresponding IPv4 address
 * **AAAA** (IPv6 Address Mapping)- stores a hostname and corresponding IPv6 address
@@ -109,6 +95,16 @@ Requires a ***priority*** value as part of their entry. Priority is used to indi
 * **SRV** (Service Location) - service location record, like MX but for other communication protocols
 * **TXT** (Text) - used to store any text-based information that can be grabbed when necessary. Commonly used to hold SPF data and verify domain ownership>
 * **SOA** (Start of Authority) - appears at the beginning of a DNS zone file, and indicates the Authoritative Name Server for the current DNS zone, contact detail for the domain administrator, domain serial number, and information on how frequently DNS information for this zone should be refreshed
+
+### DNS Query Resolution
+
+A host name can be resolved through **iterative queries** or **recursive queries**.
+
+![dns query resolution](../imgs/01-22_dns-queries.png)
+
+In theory, any DNS query can be iterative or recursive, but in practice, queries are typically iterative to reduce the burden of name resolution on the root server.
+
+It is not uncommon for DNS servers to cache records to improve delay performance and to reduce the number of DNS queries.
 
 ### SPF, DKIM, DMARC
 
