@@ -3,6 +3,7 @@
 [Getting Started](notes/00_Getting-Started.md)
 
 1. [Recon](notes/01_Recon.md)
+2. [Authentication, Session Management, Authorisation](notes/02_Authentication-Authorisation-Sessions.md)
 
 ## Challenges:
 
