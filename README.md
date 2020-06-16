@@ -11,3 +11,4 @@
 | ---               | ---                                                   | ---       |
 | Getting Started   | [here](challenges/getting-started/getting_started.md) | N/A       |
 | Recon             | [here](challenges/topic1/topic1.md)                   | [here](challenges/topic1/recon_solutions.md) |
+| User Identity and Authentication | [here](challenges/topic1/topic2.md)                   | |
