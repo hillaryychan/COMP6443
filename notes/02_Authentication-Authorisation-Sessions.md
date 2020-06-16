@@ -36,7 +36,10 @@ In 2020 web authentication is usually done with the following methods:
     * 2FA: SMS, Token, Apps (incl TOTP)
     * Active vs Passive 2FA
 * Authentication can be delegated (e.g. SSO, Oauth, JWT)
+    * OAuth - a standard that works over HTTPS and authorises devices, APIs, servers, and applications with **access tokens** instead of credentials.  
+    e.g. Logging onto a website using another website's/service's logon
 * CAPTCHAs Sometimes
+    * JWT - a standard that defines a way for securely transmitting information between parties as a JSON object. Information can be verified and trusted because it is digitally signed.
 
 ### Passwords
 
@@ -100,14 +103,16 @@ Defences against these include:
 * Proactive monitoring
 * User communication
 
-### Man-in-the-middle Attacks and TLS
+### Man-in-the-middle Attacks
 
 A **man-in-the-middle attack (MITM)** is an attack where the attacker secretly relays and possibly alters the communications between two parties who believe they are directly communicating with each other.
 
 One example of a MITM attack is active ***eavesdropping***. We force a victim's browser into communicating with an adversary in plain-text over HTTP, and the adversary proxies the modified content from an HTTPS server.  
 WiFi PineApple is a pentesting device that can perform MITM attacks
 
-As a result, **transport layer security (TLS)** is used as a widely adopted security protocol to facilitate privacy and data security for communication over the Internet.  
+#### MITM Defences
+
+**Transport layer security (TLS)** is used as a widely adopted security protocol to facilitate privacy and data security for communication over the Internet.  
 HTTPS is an implementation of TLS encryption on top of the HTTP protocol. TLS is primarily used to encrypt communications between web applications and servers, such as web browsers loading a website. It evolved from a previous encryption protocol called Secure Socket Layer (SSL).
 
 There are three main components to TLS:
@@ -115,6 +120,8 @@ There are three main components to TLS:
 * **Encryption**: hides the data being transferred from third parties
 * **Authentication**: ensures that the parties exchanging information are who they claim to be
 * **Integrity**: verifies that the data has not been forged or tampered with
+
+**HTTP Strict Transport Security (HSTS)** is a web security policy mechanism that helps to protect websites against MITM attacks. It informs user agents and web browsers ***how*** to handle its connection through a response header. This sets the [Strict-Transport-Security policy field parameter](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security), forcing those connections over HTTPS encryption, disregarding any script's calls to load any resource in that domain over HTTP.
 
 ## Session Management
 
@@ -185,4 +192,3 @@ Cookie: country=aus; SSID=abcdef
 * A **relevant action** - there is an action within the application that the attacker has a reason to induce. This might be a privileged action (such as modifying permissions for other users) or any action on user-specific data (such as changing the user's own password).
 * **Cookie-based session handling** - performing the action involves issuing one or more HTTP requests, and the application relies solely on session cookies to identify the user who has made the requests. There is no other mechanism in place for tracking sessions or validating user requests.
 * **No unpredictable request parameters** - the requests that performs the action do not contain any parameters whose values the attacker cannot determine or guess. For example, when causing a user to change their password, the function is not vulnerable if an attacker needs to know the value of the existing password.
-
