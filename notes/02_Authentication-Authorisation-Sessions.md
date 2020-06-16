@@ -38,8 +38,8 @@ In 2020 web authentication is usually done with the following methods:
 * Authentication can be delegated (e.g. SSO, Oauth, JWT)
     * OAuth - a standard that works over HTTPS and authorises devices, APIs, servers, and applications with **access tokens** instead of credentials.  
     e.g. Logging onto a website using another website's/service's logon
-* CAPTCHAs Sometimes
     * JWT - a standard that defines a way for securely transmitting information between parties as a JSON object. Information can be verified and trusted because it is digitally signed.
+* CAPTCHAs Sometimes
 
 ### Passwords
 
