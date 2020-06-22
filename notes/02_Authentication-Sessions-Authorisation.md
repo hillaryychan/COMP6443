@@ -187,8 +187,91 @@ Cookie: country=aus; SSID=abcdef
 
 **Cross-Site Request Forgery (CSRF)** is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.
 
- For a CSRF attack to be possible, three key conditions must be in place:
+CSRF attacks work by sending a rogue HTTP request from an authenticated user's browser to the application, which then commits a transaction without authorisation given by the target user. As long as the user is authenticated and a meaningful HTTP request is sent by the user's browser to a target application, the application does not know if the origin of the request is a valid transaction or a link clicked by the user (that was, say in an email) while the user is authenticated to the application.
 
-* A **relevant action** - there is an action within the application that the attacker has a reason to induce. This might be a privileged action (such as modifying permissions for other users) or any action on user-specific data (such as changing the user's own password).
-* **Cookie-based session handling** - performing the action involves issuing one or more HTTP requests, and the application relies solely on session cookies to identify the user who has made the requests. There is no other mechanism in place for tracking sessions or validating user requests.
-* **No unpredictable request parameters** - the requests that performs the action do not contain any parameters whose values the attacker cannot determine or guess. For example, when causing a user to change their password, the function is not vulnerable if an attacker needs to know the value of the existing password.
+Example of a HTTP POST to a ticket vendor to purchase a number of tickets
+
+``` http
+POST http://TicketMeister.com/Buy_ticket.htm HTTP/1.1
+Host: ticketmeister
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O;) Firefox/1.4.1
+Cookie: JSPSESSIONID=34JHURHD894LOP04957HR49I3JE383940123K
+
+ticketId=ATHX1138&to=PO BOX 1198 DUBLIN 2&amount=10&date=11042008
+```
+
+The response of the vendor is to acknowledge the purchase of the tickets:
+
+``` http
+HTTP/1.0 200 OK
+Date: Fri, 02 May 2008 10:01:20
+GMT Server: IBM_HTTP_Server
+Content-Type: text/xml;charset=ISO-8859-1
+Content-Language: en-US
+X-Cache: MISS from app-proxy-2.proxy.ie
+Connection: close
+
+ Ticket Purchased, Thank you for your custom.
+```
+
+#### CSRF Defences
+
+**CSRF Tokens** - with every request, you send a token to confirm you are running from a site the server is expecting.  
+This can be bypassed with XSS and relies on secure token and consistent rolling + usage (and developer mistakes...)
+
+**Compare Source and Target Origin** - some headers can't be messed with by code running on the browser
+
+### Securing Sessions
+
+* Minimise your attack surface - your session should be managed on the server side where possible, using a single session token
+* Mostly mechanical fixes
+    * Don't let people steal your tokens (urls, HTTP, etc)
+    * Don't let people re-use tokens (expire them properly, log out)
+    * Don't let people generate tokens (secure PRNG, avoid rolling your own crypto, don't allow users to supply tokens)
+* Attention to detail is **key**
+
+## Access Control (Authorisation)
+
+Types of (web) access control:
+
+* security through obscurity
+* one-off access control
+* rule-based access control
+
+**Horizontal access control** is making sure one user can't access a different user's data without permission.
+
+``` txt
+http://bank.com/statement.php?user_id=12078
+```
+
+**Vertical access control** is making sure only administrative users can access administrative content.  
+Attacking vertical access control is commonly known as privilege escalation
+
+``` txt
+http://bank.com/admin.php
+```
+
+### Attacking Access Control
+
+* bypass access control by accessing privileges from least protected domains.
+* `robots.txt` can reveal the levels of access control especially in regards to what should and shouldn't be accessed (not just by bots but users)
+* copy legitimate users
+* actual testing
+
+    ![testing access control](../imgs/2-36_testing-access-control.png)
+
+#### IDOR
+
+**Insecure Direct Object References (IDOR)** are a type of access control vulnerability, when an application uses user-supplied input to access objects directly.
+
+Often variables such as `id`, `pid`, `uid` are stored in headers, cookies and even urls. An attacker can access, edit or delete any of another user's objects by changing the values.
+
+### Better Access Control
+
+Using server-side validation:
+
+![server access control](../imgs/2-37_server-access-control.png)
+
+Using client-side access control:
+
+![client access control](../imgs/2-38_client-access-control.png)
