@@ -4,6 +4,7 @@
 
 1. [Recon](notes/01_Recon.md)
 2. [Authentication, Session Management, Authorisation](notes/02_Authentication-Sessions-Authorisation.md)
+3. [Injection](notes/03_Injection.md)
 
 ## Challenges:
 
@@ -12,3 +13,4 @@
 | Getting Started   | [here](challenges/getting-started/getting_started.md) | N/A       |
 | Recon             | [here](challenges/topic1/topic1.md)                   | [here](challenges/topic1/recon_solutions.md) |
 | User Identity and Authentication | [here](challenges/topic2/topic2.md)    |           |
+| Injection         | [here](TODO)                                          |           |
