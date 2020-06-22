@@ -78,7 +78,7 @@ Additionally:
 
 A study was conducted, notifying users with weak passwords to change their passwords. Here are the results
 
-![password change study](../imgs/2-11_password-change.png)
+![password change study](../imgs/02-11_password-change.png)
 
 ### Attacking Passwords
 
@@ -258,7 +258,7 @@ http://bank.com/admin.php
 * copy legitimate users
 * actual testing
 
-    ![testing access control](../imgs/2-36_testing-access-control.png)
+    ![testing access control](../imgs/02-36_testing-access-control.png)
 
 #### IDOR
 
@@ -270,8 +270,8 @@ Often variables such as `id`, `pid`, `uid` are stored in headers, cookies and ev
 
 Using server-side validation:
 
-![server access control](../imgs/2-37_server-access-control.png)
+![server access control](../imgs/02-37_server-access-control.png)
 
 Using client-side access control:
 
-![client access control](../imgs/2-38_client-access-control.png)
+![client access control](../imgs/02-38_client-access-control.png)
