@@ -22,6 +22,8 @@ Some *"tells"* for sql injection vulnerabilities:
 
 **protip**: API's often don't have error handling, and hide the error behind UI trickery (and status codes). Mobiles phones are twice as likely to be susceptible
 
+Be wary of `'` and `"` when using SQL injection, there isn't a standard to use one or the other, so try both.
+
 #### or 1=1
 
 ![or 1=1](../imgs/03-8_or-1=1.png)
@@ -50,6 +52,8 @@ SELECT * FROM USERS WHERE name='x';
 ```
 
 Now, instead of returning one record, it will return ALL records that meet the condition in the query;
+
+**Note**: Some programs trim trailing space which becomes a problem when we want to use inline commenting (`--`). To deal with this, just put something after the `--`; e.g. `-- extra stuff`
 
 ### OS Interactions
 
