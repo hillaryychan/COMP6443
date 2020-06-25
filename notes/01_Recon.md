@@ -211,6 +211,35 @@ Enumeration pro tips:
 * Mismatched technology stacks
 * others
 
+### Google Dorking
+
+A brief run down of Google Dorks Operators:
+
+* `"any text"` for Google to interpret the words literally
+* `cache:<domain>` shows cached versions of the given domain
+* `intitle:<text>` search for specific text in the HTML title  
+e.g `intitle:"login page"` searches for login pages
+* `allintitle:<text>` similar to `intitle`, but only returns pages that meets **all** of the keyword criteria
+* `inurl:<text>` search for pages based on text contained in the URL  
+e.g. `inurl:login.php`
+* `allinurl:<text>` similar to `inurl`, but only returns pages that meet **all** the matching criteria
+* `intext:<text>` searches the entire contents of a given page for keywords supplied
+* `allintext:<text>` similar to `intext`, but requires a page to match **all** of the given keywords
+* `filetype:<ft>` returns results that match the filetype  
+e.g. `filetype:pdf txt`
+* `ext:<file extension>` similar to `filetype`, but returns files based on their file extension
+* `site:<domain>` limits the scope of a query to the domain (and its subdomains)  
+e.g. `site:quoccabank.com`
+* `link:<url>` shows a list of websites that have links to the specified url
+* `*` - a wildcard for "anything"  
+e.g. `how to * a website`
+* `|` - a logical operator for "or"  
+e.g. `"security" | "tips"`
+* `+` - used to concatenate words  
+e.g. `security + trails`
+* `-` - used to show avoid showing results that contain certain words  
+e.g `security -trails` will show pages that use "security" in their text, but not those that have the word "trails"
+
 ## Recon Checklist
 
 * [ ] Direct site links
