@@ -5,6 +5,7 @@
 1. [Recon](notes/01_Recon.md)
 2. [Authentication, Session Management, Authorisation](notes/02_Authentication-Sessions-Authorisation.md)
 3. [Injection](notes/03_Injection.md)
+4. [More Injection](notes/04_More-Injection.md)
 
 ## Challenges:
 
