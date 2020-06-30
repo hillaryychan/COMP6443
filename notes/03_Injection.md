@@ -1,5 +1,7 @@
 # Injection
 
+Useful injection payloads: [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+
 The magic string when probing for vulnerabilities:
 
 ``` txt

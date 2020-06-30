@@ -1,5 +1,7 @@
 # More Injection
 
+Useful injection payloads: [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+
 If you ever get access to a sever, here are some *magical* things you should be sure to look at/do:
 
 * Files/File uploads
