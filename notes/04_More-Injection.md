@@ -118,7 +118,7 @@ There are many ways to exploit an XML parse and get around any defences.
 Useful links:
 
 * [More notes](XXE.md)
-* [XXE](ttps://portswigger.net/web-security/xxe)
+* [XXE](https://portswigger.net/web-security/xxe)
 * [Blind XXE](https://portswigger.net/web-security/xxe/blind)
 * [XXE payloads](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection)
 
