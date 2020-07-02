@@ -115,7 +115,8 @@ There are many ways to exploit an XML parse and get around any defences.
 * You can use document type definitions (DTD) and entities to get past filters and nest payloads.
 * You can use HTTP requests to send data to your own server
 
-See more in XXE [here](XXE.md)
+See more in XXE [here](XXE.md)  
+For more possible XXE payloads see [here](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection)
 
 tl;dr:
 
