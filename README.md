@@ -6,6 +6,7 @@
 2. [Authentication, Session Management, Authorisation](notes/02_Authentication-Sessions-Authorisation.md)
 3. [Injection](notes/03_Injection.md)
 4. [More Injection](notes/04_More-Injection.md)
+5. [Client-Side](notes/05_Client-Side.md)
 
 ## Challenges:
 
