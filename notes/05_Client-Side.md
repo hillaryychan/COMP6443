@@ -61,7 +61,9 @@ The script can reference URL with no JavaScript extension
 2. The padded JSON response is surrounded by a JavaScript function
 
     ``` js
-    myTransaction({'transactions': [{'transactionId': 37423, 'currency': 'AUD', 'from': 'John Deer', 'to': 'Iron Man'}, {'transactionId': 5473723, 'amount': ...}]})
+    myTransaction({'transactions': [{'transactionId': 37423, ...},
+                                    {'transactionId': 5473723,  ...}
+                                    ...]})
     ```
 
 There is no official specification for JSONP; it's a hack.
@@ -171,7 +173,7 @@ There are three main types of XSS:
 
 **Reflected XSS** occurs when an application receives data in a HTTP request and includes that data within the immediate response in an unsafe way.
 
-The workflow of a stored XSS:
+The workflow of a reflected XSS:
 
 ![reflected xss workflow](../imgs/04-1-17_reflected-xss-workflow.png)
 
@@ -195,11 +197,11 @@ The details of a stored XSS:
 
 **DOM-based XSS** occurs when an application contains some client-side JavaScript that processes data from an untrusted source in an unsafe way, usually by writing the data back to the DOM.
 
-The workflow of a stored XSS:
+The workflow of a DOM-based XSS:
 
 ![dom xss workflow](../imgs/04-1-22_dom-xss-workflow.png)
 
-The details of a dom XSS:
+The details of a DOM-based XSS:
 
 ![dom xss details](../imgs/04-1-23_dom-xss-details.png)
 
@@ -272,7 +274,7 @@ Any input received from:
 
 When you are unsure of a data source, treat it as an untrusted data
 
-#### Strategies
+### Strategies
 
 **Validation** could have two different techniques; blacklisting and whitelisting.  
 When is comes to the level of trust for your input:
