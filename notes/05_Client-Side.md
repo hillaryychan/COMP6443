@@ -209,6 +209,8 @@ The key difference between a stored XSS and DOM-based XSS is that the victim's b
 
 ### Avenues of Attack
 
+A bunch of XSS payloads from OWASP: [here](https://owasp.org/www-community/xss-filter-evasion-cheatsheet)
+
 * HTTP headers
 * Intentionally invalid requests (e.g. `http://192.168.1.1/lol.php?\<script></script>`)
 
