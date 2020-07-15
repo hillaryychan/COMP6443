@@ -171,7 +171,7 @@ There are three main types of XSS:
 
 ### Reflected XSS
 
-**Reflected XSS** occurs when an application receives data in a HTTP request and includes that data within the immediate response in an unsafe way.
+**Reflected XSS** occurs when an application receives data in a HTTP request and includes that data within the immediate response in an unsafe way. The input is ***reflected*** back in the response and gets executed.
 
 The workflow of a reflected XSS:
 
@@ -183,7 +183,7 @@ The details of a reflected XSS:
 
 ### Stored XSS
 
-**Stored XSS** (aka persistent XSS) occurs when an application receives data from an untrusted source and includes that data within its ***later*** HTTP responses in an unsafe way
+**Stored XSS** (aka persistent XSS) occurs when an application receives data from an untrusted source and includes that data within its ***later*** HTTP responses in an unsafe way. The input is ***persisted*** in some sort of database and shown back to the user from where it is stored.
 
 The workflow of a stored XSS:
 
@@ -208,8 +208,6 @@ The details of a DOM-based XSS:
 The key difference between a stored XSS and DOM-based XSS is that the victim's browser executes the payload via the DOM.
 
 ### Avenues of Attack
-
-A bunch of XSS payloads from OWASP: [here](https://owasp.org/www-community/xss-filter-evasion-cheatsheet)
 
 * HTTP headers
 * Intentionally invalid requests (e.g. `http://192.168.1.1/lol.php?\<script></script>`)
@@ -255,6 +253,12 @@ var params = "data-123&csrf_toke="+ID;
 page.setRequestHeader("Conent-length", params.length);
 page.send(params);
 ```
+
+Resources:
+
+* OWASP's XSS [payloads](https://owasp.org/www-community/xss-filter-evasion-cheatsheet)
+* `nullbyte`'s [bypassing XSS filters part 1](https://null-byte.wonderhowto.com/how-to/advanced-techniques-bypass-defeat-xss-filters-part-1-0190257/)
+* `nullbyte`'s [bypassing XSS filters part 2](https://null-byte.wonderhowto.com/how-to/advanced-techniques-bypass-defeat-xss-filters-part-2-0190959/)
 
 ### Defences
 
