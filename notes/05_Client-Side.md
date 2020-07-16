@@ -256,7 +256,7 @@ page.send(params);
 
 Resources:
 
-* OWASP's XSS [payloads](https://owasp.org/www-community/xss-filter-evasion-cheatsheet)
+* OWASP's [XSS filter evasion payloads](https://owasp.org/www-community/xss-filter-evasion-cheatsheet)
 * `nullbyte`'s [bypassing XSS filters part 1](https://null-byte.wonderhowto.com/how-to/advanced-techniques-bypass-defeat-xss-filters-part-1-0190257/)
 * `nullbyte`'s [bypassing XSS filters part 2](https://null-byte.wonderhowto.com/how-to/advanced-techniques-bypass-defeat-xss-filters-part-2-0190959/)
 
