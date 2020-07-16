@@ -133,7 +133,7 @@ Access-Control-Allow-Origin: https://foo.example
 
 #### Preflight Requests
 
-**Preflighted** requests first send an HTTP request by the `OPTIONS` method to the resource on the other domain, to determine if the actual request is safe to send. They are sent like this because they may have implications to user data.
+**Preflighted** requests are triggered by methods that can cause *side-effects* on server data. This includes `DELETE`, `PUT`, `PATCH`, `CONNECT` . Preflighted requests first send an HTTP request by the `OPTIONS` method to the resource on the other domain, to determine if the actual request is safe to send. They are sent like this because they may have implications to user data.
 
 The following is an example of a request that will be preflighted:
 
