@@ -7,6 +7,7 @@
 3. [Injection](notes/03_Injection.md)
 4. [More Injection](notes/04_More-Injection.md)
 5. [Client-Side](notes/05_Client-Side.md)
+6. [More Client-Side](notes/06_More-Client-Side.md)
 
 ## Challenges:
 
