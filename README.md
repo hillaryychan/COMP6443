@@ -15,7 +15,7 @@
 | ---               | ---                                                   | ---       |
 | Getting Started   | [here](challenges/getting-started/getting_started.md) | N/A       |
 | Recon             | [here](challenges/topic1/topic1.md)                   | [here](challenges/topic1/recon_solutions.md) |
-| User Identity and Authentication | [here](challenges/topic2/topic2.md)    | N/A       |
-| Injection         | [here](challenges/topic3/topic3.md)                   | N/A       |
+| User Identity and Authentication | [here](challenges/topic2/topic2.md)    | [here](challenges/topic2/solutions.md)
+| Injection         | [here](challenges/topic3/topic3.md)                   | [here](challenges/topic3/solutions.md)
 | Mid-sem Exam      | [here](challenges/midsem.md)                          | N/A       |
 | Client-Side       | [here](challenges/topic4/topic4.md)                   | N/A       |
