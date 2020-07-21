@@ -105,7 +105,7 @@ Clickjacking attacks are possibly by framing websites. **Frame busting** is a te
 Frame busting techniques are browser and platform dependent. Browser security settings could easily disable JavaScript. `iframe` in HTML5 also has a `sandbox` attribute, whose value is a set of allowed capabilities for the `iframe`'s content. Specifying `allow-script` or `allow-forms` for its value will neutralise frame busters.
 
 ``` html
-<iframe id="victim_website" src="https://victim-website.com" snadbox="allow-forms"></iframe>
+<iframe id="victim_website" src="https://victim-website.com" sandbox="allow-forms"></iframe>
 ```
 
 `allow-forms` permit specified actions within the frame
