@@ -91,7 +91,7 @@ Here's what happens when the response is split:
 
 ## Clickjacking
 
-**Clickjacking** is when we trick the user into clicking **hidden** content. CSS is used to manipulate layers and `iframe`s can be used to create hidden content.
+**Clickjacking** (or UI redress) is when we trick the user into clicking **hidden** content. CSS is used to manipulate layers and `iframe`s can be used to create hidden content.
 
 ![clickjacking](../imgs/04-2-17_clickjacking.png)
 
@@ -138,6 +138,15 @@ A simple policy with good security measures requires:
 * no inline or `eval` fro scripts and style resources
 
 `Content-Security-Policy: default-src 'self;'` defines that only resources from the same domain can be loaded. A more granular version of this would be `Content-Security-Policy: default-src 'none'; sript-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';`
+
+CSP vs. SOP (and CORS):
+
+![csp vs sop](../imgs/csp-vs-sop.png)
+
+Useful links:
+
+* [CSP Quick Reference Guide](https://content-security-policy.com/)
+* [Mozilla CSP Spec](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 
 ### CSP Nonce
 
@@ -209,5 +218,4 @@ In summary:
 ## Reference
 
 * [XSS prevention](https://owasp.org/www-project-cheat-sheets/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html)
-* [Mozilla CSP Spec](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 * [OWASP JuiceShop](https://github.com/bkimminich/juice-shop)
