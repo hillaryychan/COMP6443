@@ -137,7 +137,25 @@ A simple policy with good security measures requires:
 * all resource hosted in the same domain
 * no inline or `eval` fro scripts and style resources
 
-`Content-Security-Policy: default-src 'self;'` defines that only resources from the same domain can be loaded. A more granular version of this would be `Content-Security-Policy: default-src 'none'; sript-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';`
+The `Content-Security-Policy` header value is made up of one or more directives; multiple directives are separated with a semicolon `;`. Common directives are:
+
+* `default-src` -  defines the default policy for fetching resources
+* `script-src` - defines valid sources of JavaScript
+* `style-src` -  defines valid sources of stylesheets or CSS
+* `img-src` - defines valid sources of image
+
+All directives ending with `-src` support similar values known as a source list. Multiple source list values can be space separated with the exception of `'none'`, which should be the only value. Common source values:
+
+* `*` - a wildcard for any URL except `data:`, `blob:`, `filesystem:` schemes
+* `'none'` - don't load from ANY source
+* `'self'` - only load from the same origin (scheme, host, port)
+* `domain.example.com` - allow resources from specified domain
+* `sha256-<hash>` - allow an inline script to execute if its hashes match the specified hash in the header; can also be `sha384-` and `sha512-`
+* `nonce-<value>` - allow an inline script to execute if the script tag contains a matching nonce value; see [CSP nonce](#csp-nonce)
+* `strict-dynamic` - let an allowed script load additional scripts (that may not meet the existing CSP requirements)
+* `unsafe-(inline|eval|hashes)` - allow inline source elements, unsafe dynamic code evaluation, and scripts in event handlers respectively
+
+Example: `Content-Security-Policy: default-src 'self';` defines that only resources from the same domain can be loaded. A more granular version of this would be `Content-Security-Policy: default-src 'none'; sript-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';`
 
 CSP vs. SOP (and CORS):
 
