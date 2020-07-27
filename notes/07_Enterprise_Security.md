@@ -99,7 +99,9 @@ If we were to add new security zone in our organisation, our current jump host w
 
 ### Secrets Management
 
-Secrets include a username and password, API key or cryptographic key used by a user, administrator, or a process to access protected data.
+**Secrets** include a username and password, API key or cryptographic key used by a user, administrator, or a process to access protected data.
+
+A **secrets manage** is a service that helps you protect access to your applications, services, and IT resources.
 
 These can easily be found in
 
