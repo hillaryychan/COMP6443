@@ -20,3 +20,4 @@
 | Injection           | [here](challenges/topic3/topic3.md)                   | [here](challenges/topic3/solutions.md) |
 | Mid-sem Exam        | [here](challenges/midsem/midsem.md)                   | [here](challenges/midsem/solutions.md) |
 | Client-Side         | [here](challenges/topic4/topic4.md)                   | N/A       |
+| Enterprise Security | [here](challenges/topic5/topic5.md)                   | N/A       |
