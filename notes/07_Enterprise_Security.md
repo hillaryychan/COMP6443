@@ -101,14 +101,14 @@ If we were to add new security zone in our organisation, our current jump host w
 
 **Secrets** include a username and password, API key or cryptographic key used by a user, administrator, or a process to access protected data.
 
-A **secrets manage** is a service that helps you protect access to your applications, services, and IT resources.
-
 These can easily be found in
 
 * repositories (Github, Gitlab)
 * collaboration applications
 * documentation (e.g. Confluence)
 * logs
+
+A **secrets manager** is a service that helps you protect access to your applications, services, and IT resources. E.g. [Google's Secret Manager](https://cloud.google.com/secret-manager) and [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/). They allows you easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle.
 
 It it important to store secrets into dedicated managers.
 
