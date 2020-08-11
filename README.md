@@ -9,6 +9,7 @@
 5. [Client-Side](notes/05_Client-Side.md)
 6. [More Client-Side](notes/06_More-Client-Side.md)
 7. [Enterprise Security](notes/07_Enterprise_Security.md)
+8. [Review](notes/08_Review.md)
 
 ## Challenges:
 
