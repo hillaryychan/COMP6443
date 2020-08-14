@@ -243,7 +243,7 @@ e.g `security -trails` will show pages that use "security" in their text, but no
 ## Recon Checklist
 
 * [ ] Direct site links
-* [ ] Certificate transparency ([crt.sh](crt.sh))
+* [ ] Certificate transparency ([crt.sh](https://crt.sh/))
 * [ ] Brute force incl. subdomains, subdirectories etc.
 * [ ] Developer Tools
     * [ ] View page source for comments or subdirectory files

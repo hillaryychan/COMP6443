@@ -13,6 +13,42 @@ Passive:
 * developer tools network tab
 * public resources ([dnsdumpster.com](https://dnsdumpster.com/), etc.)
 
+Recon checklist:
+
+* [ ] Direct site links
+
+    ``` sh
+    python3 link-finder.py <url>
+    ```
+
+* [ ] Certificate transparency ([crt.sh](https://crt.sh))
+
+    ``` txt
+    https://crt.sh/?q=<domain>
+    ```
+
+* [ ] Brute force incl. subdomains, subdirectories etc.  
+
+    ``` sh
+    # subdomains
+    sublist3r -v -d <domain> -o outfile -b
+    ```
+
+* [ ] Developer Tools
+    * [ ] View page source for comments or subdirectory files
+    * [ ] Console
+    * [ ] Subdirectory files
+    * [ ] `robots.txt`
+    * [ ] Cookies
+* [ ] Email protocols (SPF, DKIM, DMARC)
+
+    ``` sh
+    # spf
+    dig _spf.<domain> TXT
+    # dmarc
+    dig _dmarc.<domain> TXT
+    ```
+
 ## Authentication
 
 ### SSO
