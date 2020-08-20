@@ -84,6 +84,7 @@ Payloads:
 
 * `OR 1=1` (True), `AND 1=2` (False), `OR 9=9` (WAF Bypass)
     * Alternative comments: `/**/`, `//`, `#`
+    * String comparison `"1" LIKE "1"` instead of using `=`
     * Just `TRUE` or `FALSE` instead of expressions
     * `||` for `or`
 * `UNION SELECT (new query, matching columns)`
@@ -98,6 +99,20 @@ Rules:
 
 1. Query 1 needs the **same columns AND column types** as Query 2
 2. The query must match quotes/braces, and end cleanly
+
+Metadata tables:
+
+* MySQL
+    * `INFORMATION_SCHEMA.TABLES` for table information  
+    Useful Columns:
+        * `TABLE_NAME` for table name
+        * `TABLE_TYPE` for type of the table. To get user defined tables `table_type like 'base table'`
+        * `TABLE_SCHEMA` for name of schema that contains the table
+        * `TABLE_CATALOG` for table qualifier
+    * `INFORMATION_SCHEMA.COLUMNS` for information about columns in tables  
+    Useful Columns:
+        * `TABLE_NAME` for table name
+        * `COLUMN_NAME` for column name
 
 ### Injection
 
